@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {App} from './App';
 import reportWebVitals from './reportWebVitals';
+import { io } from "socket.io-client"
+
+
+const url = "ws://localhost:8000"
+const authSocket = io(`${url}/auth`)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App  auth={authSocket}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
